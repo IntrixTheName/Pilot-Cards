@@ -1,0 +1,8 @@
+Designed with AppGameKit Classic- www.appgamekit.com
+
+Uploaded to Github, free to use under MIT License (see in LICENSE.txt)
+
+Assistance recieved from-
+	-Jordan Kooyman
+	-Professor Paul Allen, FGCU
+	-Documentation from AppGameKit
