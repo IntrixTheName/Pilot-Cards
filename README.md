@@ -3,7 +3,7 @@ A digital recreation of a complex card game
 
 ### **Professional Note:**
 
-  This is the first time I'm attempting a visual-based and event-driven program. This project was my idea, and I recieved assistance from friends and professors along with online resources to complete this project. Full list of outside assistance can be found in [insert filename when available]. As also encouraged by one of the professors I recieved assistance from, this is also the first of my projects important enough to consider licensing, so see LICENSE.txt.
+  This is the first time I'm attempting a visual-based and event-driven program. This project was my idea, and I recieved assistance from friends and professors along with online resources to complete this project. Full list of outside assistance can be found in CREDITS.txt. As also encouraged by one of the professors I recieved assistance from, this is also the first of my projects important enough to consider licensing, so see LICENSE.txt.
 
 ### **Personal Note:**
 
