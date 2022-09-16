@@ -1,0 +1,82 @@
+Pilot- A strategy card game
+---------------------------
+
+Author's note: This is a card game I used to play with an ex before I started college.
+        It's a game he made up and I'm the only other person who knows how to play. Through
+        making this project, I'm hoping to keep my sentiment for longer since this game
+        ment a lot to us and our relaitonship.
+
+Setup: Separate a deck of cards by color, then each player takes a color. Specific suits don't
+        matter, only the color. Imagine a 4 x 4 grid on the playing table, that's where the cards
+        will be placed. For a visual reference, it's standard to keep your shuffled deck face-down
+        nedt to the second row (see diagram st the end). Draw your hand to 4 cards and procede to the
+        instruction section.
+
+Instructions: This game is somewhat of a cross between Chess and War, cards can be played
+        on the board, trying to drain the opponent's health before the opponent drains yours.
+       
+        To start your turn, move any cards you currently control on the board according to their rules.
+        Afterwards, you need to sacrifice a card. This sacrifice can be a card in your hand or
+        the top card of your deck. Place this sacrifice face-up on top of your trash pile. For the
+        remainder of your turn, you can play any card in your hand with a value less than or equal to
+        the value of the sacrifice (Ace counts as low for this game).
+
+        After sacrificing a card, you may lay down up to 3 other cards, even if the sacrifice came from
+        the deck. Some cards have special abilities, see table at the end for reference, but the cards can
+        generally only be layed down in the two rows closest to the player on an empty space.
+
+        When you are done laying down your cards, the turn passes to your opponent.
+
+Standard Card Rules: Any asterisks in this section indicate there is at least one card in the special
+        section that breaks the mentioned rule. At the start of the player's turn, any cards they control
+        move forward one row*. If a card moves to a space occupied by another card, the cards "battle". The
+        card with the higher value wins the battle*.
+
+Special Card Rules:
+        A - Can be placed anywhere on the board, not just the first two rows
+        2 - Moves 2 rows forward each turn
+        3 - Kills any card, even if it's a higher value
+        4 -
+        5 - Stays stationary, kills any card with a higher value, killed by cards with a lower value
+        6 -
+        7 -
+        8 -
+        9 -
+        10- Can be placed on top of any occupied space in the first two rows, even if the space has a higher value card
+        J - When placed down, remove one opponent's card on the board of your choosing
+        Q - Draw 2 from your deck, you can place as many cards as you have in your hand until the end of your turn
+        K - Clears all opponent's cards from the board
+
+Board Diagram:
+       
+        T|0|1|2|3|
+        -+-+-+-+--
+        B|4|5|6|7|
+        -+-+-+-+--
+        R|8|9|A|B|
+        -+-+-+-+--
+        T|C|D|E|F|
+
+        Key-
+        T Trash pile, discarded cards (face up)
+        B/R Player hands, black and red. Not player-specific
+        0-F Board squares, where cards can be played and interact
+
+-----------------------------------------------------------------------------------------------------------------------
+
+Project Credits:
+	Coded with assistance and assets from AppGameKit on Steam
+	Mainly in BASIC, will attempt C++ if I can attempt it in this project
+
+Personal Note:
+	This is my first time creating a project with a visual interface, everyhting else I've dont to this poitn has
+	been console & text based. It's an important milestone for me to work with a visual program since it's likely
+	what I will experience in an internship and my career. So, let this be proof of my out-of-class learning and
+	I hope this project works out. The game I'm recreating in code is a game my ex made up back when I lived in
+	Michigan. He was my first love and we had a strong friendship over this game (he wrote a whole strategy guide,
+	which is unfortunately lost to me at this point). We broke up when the pandemic started, and I never even
+	got to properly say goodbye, so this is one of the few memories I have of the relationship. I'm a very
+	sentimental person, and this game means a lot to me. I'm hoping that, in making this project, I can both
+	immortalize the relationship's memory and the impact it had on my life as well as having the possibility
+	of sharing the joy and fun to others. I'm the only other person in the world who knows to play at the time
+	of writing this, but I hope I can change that :)

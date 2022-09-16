@@ -5,15 +5,13 @@
 
 //Initializations & Constants (I'm leaning heavier towards constants bc active dev & many changes)
 #include "KeyScanCodes.agc"
+#include "PilotConstants.agc"
 #insert "Setup.agc"
 
-#constant BACKGROUND 100
-#constant CARD_ATLAS 101
-#constant CARD_X 180
-#constant CARD_Y 240
+
 
 CreateSprite(BACKGROUND, LoadImage("card_table.png"))
-SetSpriteSize(BACKGROUND, RES_X, RES_Y)
+SetSpriteSize(BACKGROUND, VIR_X, VIR_Y)
 LoadImage(CARD_ATLAS,"card_atlas.png") //Using atlas so I only have to import 1 pic for all cards
 
 
@@ -22,9 +20,16 @@ LoadImage(CARD_ATLAS,"card_atlas.png") //Using atlas so I only have to import 1 
 
 //Main------------------------------------------------------------------------------------------------------------------
 
+program_stage as integer = 0
+
 do
     //Handles exiting application
     if GetRawKeyState(KEY_ESCAPE) then exit
+    
+    //Determines action of current frame
+    select program_stage
+		
+	endselect
     
     //Debug- adds ace of spades to screen at click location
     if GetPointerPressed() = 1
