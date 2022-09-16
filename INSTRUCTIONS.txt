@@ -1,11 +1,6 @@
 Pilot- A strategy card game
 ---------------------------
 
-Author's note: This is a card game I used to play with an ex before I started college.
-        It's a game he made up and I'm the only other person who knows how to play. Through
-        making this project, I'm hoping to keep my sentiment for longer since this game
-        ment a lot to us and our relaitonship.
-
 Setup: Separate a deck of cards by color, then each player takes a color. Specific suits don't
         matter, only the color. Imagine a 4 x 4 grid on the playing table, that's where the cards
         will be placed. For a visual reference, it's standard to keep your shuffled deck face-down
@@ -62,21 +57,3 @@ Board Diagram:
         B/R Player hands, black and red. Not player-specific
         0-F Board squares, where cards can be played and interact
 
------------------------------------------------------------------------------------------------------------------------
-
-Project Credits:
-	Coded with assistance and assets from AppGameKit on Steam
-	Mainly in BASIC, will attempt C++ if I can attempt it in this project
-
-Personal Note:
-	This is my first time creating a project with a visual interface, everyhting else I've dont to this poitn has
-	been console & text based. It's an important milestone for me to work with a visual program since it's likely
-	what I will experience in an internship and my career. So, let this be proof of my out-of-class learning and
-	I hope this project works out. The game I'm recreating in code is a game my ex made up back when I lived in
-	Michigan. He was my first love and we had a strong friendship over this game (he wrote a whole strategy guide,
-	which is unfortunately lost to me at this point). We broke up when the pandemic started, and I never even
-	got to properly say goodbye, so this is one of the few memories I have of the relationship. I'm a very
-	sentimental person, and this game means a lot to me. I'm hoping that, in making this project, I can both
-	immortalize the relationship's memory and the impact it had on my life as well as having the possibility
-	of sharing the joy and fun to others. I'm the only other person in the world who knows to play at the time
-	of writing this, but I hope I can change that :)
