@@ -7,5 +7,6 @@
 //Universal Sizes
 #constant CARD_X 180
 #constant CARD_Y 240
-#constant VIRT_X 1920 //Virtual resolution for dev purposes, adjusted to actual screen size at runtime
-#constant VIRT_Y 1080 
+#constant VIR_X 1920 //Virtual resolution for dev purposes, adjusted to actual screen size at runtime
+#constant VIR_Y 1080 
+#constant 
