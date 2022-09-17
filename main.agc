@@ -8,13 +8,21 @@
 #include "PilotConstants.agc"
 #insert "Setup.agc"
 
-
-
 CreateSprite(BACKGROUND, LoadImage("card_table.png"))
-SetSpriteSize(BACKGROUND, VIR_X, VIR_Y)
+SetSpriteSize(BACKGROUND, VIRT_X, VIRT_Y)
 LoadImage(CARD_ATLAS,"card_atlas.png") //Using atlas so I only have to import 1 pic for all cards
 
+type Player //Used for keeping track of cards in deck, hand, and trash pile of players
+	deck as integer []
+	hand as integer []
+	trash as integer []
+endtype
 
+pla as Player
+pla.deck = [1,2,3,4,5,6,7,8,9,10,11,12,13, 
+opp as Player
+
+board as integer [16] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
 
 
