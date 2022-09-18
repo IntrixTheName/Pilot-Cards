@@ -51,11 +51,13 @@ FILE_0=main.agc;-1
 FILE_1=KeyScanCodes.agc;-1
 FILE_2=Setup.agc;-1
 FILE_3=PilotConstants.agc;-1
+FILE_4=FrameFunctions.agc;-1
 
 [files]
-FILE_NAME_0=1;main.agc;1664;0
+FILE_NAME_0=0;main.agc;2998;0
 FILE_NAME_1=0;Setup.agc;385;1
 FILE_NAME_2=0;PilotConstants.agc;300;2
+FILE_NAME_3=1;FrameFunctions.agc;0;3
 
 [project]
 description=

@@ -7,6 +7,10 @@
 #include "KeyScanCodes.agc"
 #include "PilotConstants.agc"
 #insert "Setup.agc"
+#include "FrameFunctions.agc"
+
+os as string //Detect OS on device when running, for debugging purposes
+os = GetDeviceBaseName()
 
 CreateSprite(BACKGROUND, LoadImage("card_table.png"))
 SetSpriteSize(BACKGROUND, VIR_X, VIR_Y)
@@ -40,7 +44,7 @@ do
 	endif
     
     //Determines action of current frame
-    select program_stage
+    remstart select program_stage
 		case 0:
 			start_menu()
 			endcase
@@ -59,7 +63,7 @@ do
 		case 5:
 			end_game()
 			endcase
-	endselect
+	endselect remend
     
     //Debug- adds ace of spades to screen at click location
     if not pointer_toggle = 0
@@ -67,7 +71,8 @@ do
 		SetSpritePosition(card_calc(1,"spades"), GetPointerX() - (CARD_X/2), GetPointerY() - (CARD_Y/2))
 	endif
 
-    //Print( ScreenFPS() ) //Shows FPS on-screen, not needed right now
+    Print( ScreenFPS() ) //Shows FPS on-screen
+    Print(os)
 	
     Sync() //Update screen
 loop
@@ -110,9 +115,5 @@ function create_card_sprite(value as integer, suit as string)
 	
 	//Create sprite
 	CreateSprite(sprite_id, LoadSubImage(CARD_ATLAS, ident))
-endfunction
-	
-function start_menu() //Creates buttons for the main menu before game start
-	
 endfunction
 	
