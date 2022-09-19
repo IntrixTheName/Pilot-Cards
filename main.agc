@@ -33,7 +33,7 @@ board as integer [16] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
 //Main------------------------------------------------------------------------------------------------------------------
 
-program_stage as integer = 0
+program_stage as integer = 0 //Determines which function in the main loop handles current frame
 pointer_toggle = 0 //Acts as boolean
 
 do
