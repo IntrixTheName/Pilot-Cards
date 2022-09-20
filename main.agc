@@ -8,11 +8,11 @@
 #include "PilotConstants.agc"
 #insert "Setup.agc"
 #include "FrameFunctions.agc"
-
-os as string //Detect OS on device when running, for debugging purposes
+global os as string //Detect OS on device when running, for debugging purposes
 os = GetDeviceBaseName()
 
-CreateSprite(BACKGROUND, LoadImage("card_table.png"))
+LoadImage(BACKGROUND_IMAGE,"card_table.png")
+CreateSprite(BACKGROUND, BACKGROUND_IMAGE)
 SetSpriteSize(BACKGROUND, VIR_X, VIR_Y)
 LoadImage(CARD_ATLAS,"card_atlas.png") //Using atlas so I only have to import 1 pic for all cards
 
@@ -23,8 +23,8 @@ type Player //Used for keeping track of cards in deck, hand, and trash pile of p
 endtype
 
 player as Player //Player object, black cards
-player.deck = [ 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,   27,28,29,30,31,32,33,34,35,36,37,38,39]
 opponent as Player //Opponent object, red cards
+player.deck   = [ 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,   27,28,29,30,31,32,33,34,35,36,37,38,39]
 opponent.deck = [14,15,16,17,18,19,20,21,22,23,24,25,26,   40,41,42,43,44,45,46,47,48,49,50,51,52]
 
 board as integer [16] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -33,7 +33,6 @@ board as integer [16] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
 //Main------------------------------------------------------------------------------------------------------------------
 
-program_stage as integer = 0 //Determines which function in the main loop handles current frame
 pointer_toggle = 0 //Acts as boolean
 
 do
@@ -44,36 +43,19 @@ do
 	endif
     
     //Determines action of current frame
-    remstart select program_stage
+    select program_stage
 		case 0:
 			start_menu()
 			endcase
 		case 1:
-			begin_turn()
+			settings_menu()
 			endcase
 		case 2:
-			player_turn()
+			game()
 			endcase
-		case 3:
-			card_in_hand()
-			endcase
-		case 4:
-			opponent_turn()
-			endcase
-		case 5:
-			end_game()
-			endcase
-	endselect remend
+	endselect
     
-    //Debug- adds ace of spades to screen at click location
-    if not pointer_toggle = 0
-		create_card_sprite(1,"spades")
-		SetSpritePosition(card_calc(1,"spades"), GetPointerX() - (CARD_X/2), GetPointerY() - (CARD_Y/2))
-	endif
-
-    Print( ScreenFPS() ) //Shows FPS on-screen
-    Print(os)
-	
+    print_info()
     Sync() //Update screen
 loop
 
@@ -82,7 +64,9 @@ loop
 //Functions-------------------------------------------------------------------------------------------------------------
 
 function print_info()
-	
+	Print( ScreenFPS() ) //Shows FPS on-screen
+    Print("Program stage: " + str(program_stage) + ", Program Substage: " + str(program_substage))
+    Print(os)
 endfunction
 
 function card_calc(value as integer, suit as string)

@@ -3,6 +3,7 @@
 //Universal ID's
 #constant BACKGROUND 100
 #constant CARD_ATLAS 101
+#constant BACKGROUND_IMAGE 102
 
 //Universal Sizes
 #constant CARD_X 180
