@@ -17,15 +17,15 @@ SetSpriteSize(BACKGROUND, VIR_X, VIR_Y)
 LoadImage(CARD_ATLAS,"card_atlas.png") //Using atlas so I only have to import 1 pic for all cards
 
 type Player //Used for keeping track of cards in deck, hand, and trash pile of players
-	deck as integer []
-	hand as integer []
+	deck  as integer []
+	hand  as integer []
 	trash as integer []
 endtype
 
-pla as Player //Player object, black cards
-pla.deck = [ 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,   27,28,29,30,31,32,33,34,35,36,37,38,39]
-opp as Player //Opponent object, red cards
-opp.deck = [14,15,16,17,18,19,20,21,22,23,24,25,26,   40,41,42,43,44,45,46,47,48,49,50,51,52]
+player as Player //Player object, black cards
+player.deck = [ 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,   27,28,29,30,31,32,33,34,35,36,37,38,39]
+opponent as Player //Opponent object, red cards
+opponent.deck = [14,15,16,17,18,19,20,21,22,23,24,25,26,   40,41,42,43,44,45,46,47,48,49,50,51,52]
 
 board as integer [16] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
@@ -80,6 +80,10 @@ loop
 
 
 //Functions-------------------------------------------------------------------------------------------------------------
+
+function print_info()
+	
+endfunction
 
 function card_calc(value as integer, suit as string)
 	//Initialize to 0

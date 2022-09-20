@@ -9,4 +9,3 @@
 #constant CARD_Y 240
 #constant VIR_X 1920 //Virtual resolution for dev purposes, adjusted to actual screen size at runtime
 #constant VIR_Y 1080 
-#constant 
