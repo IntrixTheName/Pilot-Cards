@@ -1,0 +1,42 @@
+Savegame file format:
+
+File is stored in Base32, where the first 52 characters represent the location of the cards, and characters 53 & 54 represent player and opponent health respectively.
+Health is stored as a value between 1-20 inclusive, and the table below innustrates the value for the card positions
+
+
+
+Card Location | Stored Value (decimal)
+--------------|-----------------------
+Board           1-16, based on location
+- - - - - - - | - - - - - - - - - - - 
+Player Deck     17
+Player Hand     18
+Player Trash    19
+- - - - - - - | - - - - - - - - - - -
+Opp. Deck       20
+Opp. Hand       21
+Opp. Trash      22
+
+
+
+And the Base32 scheme I used is an extended version of Base16, see table below for quick reference
+
+
+
+Value | Encoded
+------|--------
+1-9     1-9
+10      A
+11      B
+- - - | - - - -
+12      C
+...     ...
+16      G
+- - - | - - - -
+17      H
+18      I
+...     ...
+- - - | - - - -
+29      T
+30      U
+31      V

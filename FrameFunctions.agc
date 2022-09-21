@@ -1,11 +1,12 @@
 //Functions to handle gameplay on each frame, extension of switch statement in main loop
 
-global program_stage as integer = 0 //Determines which function in the main loop handles current frame
-global program_substage as integer = 0 //Sub-stage to refine functions
+global program_stage as string = "" //Determines which function in the main loop handles current frame
+global program_substage as string = "" //Sub-stage to refine functions
+global game_stage as string = "" //Keeps track on where the game is, even if another function is active
 
 function start_menu()
 	select program_substage
-		case 0:
+		case "":
 			play_button = 1
 			AddVirtualButton(play_button,VIR_X/4,VIR_Y/2,1000)
 			SetVirtualButtonSize(play_button,450,300)
@@ -23,22 +24,22 @@ function start_menu()
 			inc program_substage, 1
 		endcase
 		
-		case 1:
+		case "check_select":
 			if GetVirtualButtonPressed(1)
 				//To be done
 			elseif GetVirtualButtonPressed(2)
 				//To be done
 			elseif GetVirtualButtonPressed(3)
-				program_substage = 2 //Send main loop to settings menu
+				program_substage = "clean_up" //Send main loop to settings menu
 			endif
 		endcase
 		
-		case 2:
+		case "clean_up":
 			for i = 1 to 3 //Delete buttons from this stage
 				DeleteVirtualButton(i)
 			next i
 			program_stage = 1
-			program_substage = 0
+			program_substage = ""
 		endcase
 	
 	endselect
@@ -53,5 +54,10 @@ endfunction
 
 
 function game()
-	select program_substage
-		case 0
+	select game_stage
+		case "":
+			//Tries to load previous save file if it exists
+			if GetFileExists("last_session.sav")
+		endcase
+	endselect
+endfunction
