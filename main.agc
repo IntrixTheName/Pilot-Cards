@@ -107,7 +107,7 @@ function create_card_sprite(value as integer, suit as string)
 	CreateSprite(sprite_id, LoadSubImage(CARD_ATLAS, ident))
 endfunction
 
-function to_base_32(input)
+function to_base_32(input as integer)
 	output as string
 	select input
 		case 1:
@@ -204,4 +204,9 @@ function to_base_32(input)
 			output = "V"
 			endcase
 	endselect
+endfunction output
+
+function to_base_10(input as string)
+	output as integer
+	
 endfunction output
