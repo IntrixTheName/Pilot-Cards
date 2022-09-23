@@ -4,15 +4,7 @@
 //Refer to READ_ME.txt for further instructions/informaton
 
 //Initializations & Constants (I'm leaning heavier towards constants bc active dev & many changes)
-type Player //Used for keeping track of cards in deck, hand, and trash pile of players
-	health as integer
-	deck   as integer []
-	hand   as integer []
-	trash  as integer []
-endtype
-player as Player //Player object, black cards
-opponent as Player //Opponent object, red cards
-
+#insert "PlayerType.agc"
 #include "KeyScanCodes.agc"
 #include "PilotConstants.agc"
 #insert "Setup.agc"
@@ -20,16 +12,14 @@ opponent as Player //Opponent object, red cards
 
 global os as string //Detect OS on device when running, for debugging purposes
 os = GetDeviceBaseName()
+SetRandomSeed(GetSecondsFromUnix(GetUnixTime())) //Sets condition for random generator
 
 LoadImage(BACKGROUND_IMAGE,"card_table.png")
 CreateSprite(BACKGROUND, BACKGROUND_IMAGE)
 SetSpriteSize(BACKGROUND, VIR_X, VIR_Y)
 LoadImage(CARD_ATLAS,"card_atlas.png") //Using atlas so I only have to import 1 pic for all cards
 
-player.deck   = [ 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,   27,28,29,30,31,32,33,34,35,36,37,38,39]
-opponent.deck = [14,15,16,17,18,19,20,21,22,23,24,25,26,   40,41,42,43,44,45,46,47,48,49,50,51,52]
 
-board as integer [16] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
 
 
@@ -46,15 +36,28 @@ do
     
     //Determines action of current frame
     select program_stage
-		case 0:
-			start_menu()
+		
+		case "": //First action on app start
+			program_stage = "menu"
+			menu()
 			endcase
-		case 1:
+		
+		case "menu":
+			menu()
+			endcase
+			
+		case "settings":
 			settings_menu()
 			endcase
-		case 2:
+			
+		case "reference":
+			//quick_reference()
+			endcase
+			
+		case "game":
 			game()
 			endcase
+			
 	endselect
     
     print_info()
@@ -67,7 +70,7 @@ loop
 
 function print_info()
 	Print( ScreenFPS() ) //Shows FPS on-screen
-    Print("Program stage: " + str(program_stage) + ", Program Substage: " + str(program_substage))
+    Print("Program stage: " + program_stage + ", Program Substage: " + program_substage)
     Print(os)
 endfunction
 
@@ -91,6 +94,12 @@ function card_calc(value as integer, suit as string)
 	
 	//Return id_value
 endfunction id_value
+
+function draw_card(person as string)
+	if person = "player"
+	
+	endif
+endfunction
 
 function create_card_sprite(value as integer, suit as string)
 	//Determine ID value for sprite
@@ -208,5 +217,99 @@ endfunction output
 
 function to_base_10(input as string)
 	output as integer
-	
+	select input
+		case "1":
+			output = 1
+			endcase
+		case "2":
+			output = 2
+			endcase
+		case "3":
+			output = 3
+			endcase
+		case "4":
+			output = 4
+			endcase
+		case "5":
+			output = 5
+			endcase
+		case "6":
+			output = 6
+			endcase
+		case "7":
+			output = 7
+			endcase
+		case "8":
+			output = 8
+			endcase
+		case "9":
+			output = 9
+			endcase
+		case "A":
+			output = 10
+			endcase
+		case "B":
+			output = 11
+			endcase
+		case "C":
+			output = 12
+			endcase
+		case "D":
+			output = 13
+			endcase
+		case "E":
+			output = 14
+			endcase
+		case "F":
+			output = 15
+			endcase
+		case "G":
+			output = 16
+			endcase
+		case "H":
+			output = 17
+			endcase
+		case "I":
+			output = 18
+			endcase
+		case "J":
+			output = 19
+			endcase
+		case "K":
+			output = 20
+			endcase
+		case "L":
+			output = 21
+			endcase
+		case "M":
+			output = 22
+			endcase
+		case "N":
+			output = 23
+			endcase
+		case "O":
+			output = 24
+			endcase
+		case "P":
+			output = 25
+			endcase
+		case "Q":
+			output = 26
+			endcase
+		case "R":
+			output = 27
+			endcase
+		case "S":
+			output = 28
+			endcase
+		case "T":
+			output = 29
+			endcase
+		case "U":
+			output = 30
+			endcase
+		case "V":
+			output = 31
+			endcase
+	endselect
 endfunction output
