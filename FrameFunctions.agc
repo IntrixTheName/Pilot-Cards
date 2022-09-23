@@ -10,7 +10,7 @@ function menu()
 			play_button = 1
 			AddVirtualButton(play_button,(VIR_X/4),(VIR_Y/2 - 200),1000)
 			SetVirtualButtonSize(play_button,450,300)
-			SetVirtualButtonText(play_button,"Play New")
+			SetVirtualButtonText(play_button,"Play")
 			
 			load_button = 2
 			AddVirtualButton(load_button,(VIR_X/2),(VIR_Y/2 - 200),1000)
