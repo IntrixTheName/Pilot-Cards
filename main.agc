@@ -16,7 +16,8 @@ SetRandomSeed(GetSecondsFromUnix(GetUnixTime())) //Sets condition for random gen
 
 LoadImage(BACKGROUND_IMAGE,"card_table.png")
 CreateSprite(BACKGROUND, BACKGROUND_IMAGE)
-SetSpriteSize(BACKGROUND, VIR_X, VIR_Y)
+SetSpriteSize(BACKGROUND, VIR_X + 200, VIR_Y + 100)
+SetSpritePosition(BACKGROUND,-100,-50)
 LoadImage(CARD_ATLAS,"card_atlas.png") //Using atlas so I only have to import 1 pic for all cards
 
 

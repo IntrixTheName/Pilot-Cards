@@ -56,12 +56,12 @@ FILE_5=FileManip.agc;-1
 FILE_6=PlayerType.agc;-1
 
 [files]
-FILE_NAME_0=0;main.agc;1852;0
+FILE_NAME_0=1;main.agc;728;0
 FILE_NAME_1=0;Setup.agc;176;1
 FILE_NAME_2=0;PilotConstants.agc;132;2
-FILE_NAME_3=1;FrameFunctions.agc;602;3
+FILE_NAME_3=0;FrameFunctions.agc;416;3
 FILE_NAME_4=0;FileManip.agc;1224;4
-FILE_NAME_5=0;PlayerType.agc;732;5
+FILE_NAME_5=0;PlayerType.agc;167;5
 
 [project]
 description=
