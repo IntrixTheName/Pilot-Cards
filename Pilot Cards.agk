@@ -21,6 +21,7 @@ arcore=0
 version_name=
 version_number=0
 firebase_config_path=
+app_icon_new_path=
 
 [ipa_settings]
 app_icon_path=

@@ -1,4 +1,4 @@
-//Creating and saving game when app is closed
+//Dealing with saving & loading files for game state
 
 function encode_save()
 	//Takes current game state and encodes it to the save format
@@ -28,8 +28,10 @@ endfunction savedata
 function decode_save()
 	//Tests if there is a file to retrieve data from
 	if GetFileExists("last_session.sav")
-		//Load data & process
+		savefile = OpenToRead("last_session.sav")
+		savedata as string
+		savedata = ReadString(savefile)
 	else
-		//Return hard-coded value in lieu of savedata
+		game_start_defaults()
 	endif
 endfunction

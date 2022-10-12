@@ -10,9 +10,9 @@
 #insert "Setup.agc"
 #include "FrameFunctions.agc"
 
-global os as string //Detect OS on device when running, for debugging purposes
-os = GetDeviceBaseName()
-SetRandomSeed(GetSecondsFromUnix(GetUnixTime())) //Sets condition for random generator
+global os as string 
+os = GetDeviceBaseName() //Detect OS on device when running, for debugging purposes
+//SetRandomSeed(GetSecondsFromUnix(GetUnixTime())) //Sets condition for random generator
 
 LoadImage(BACKGROUND_IMAGE,"card_table.png")
 CreateSprite(BACKGROUND, BACKGROUND_IMAGE)
@@ -26,37 +26,39 @@ LoadImage(CARD_ATLAS,"card_atlas.png") //Using atlas so I only have to import 1 
 
 //Main------------------------------------------------------------------------------------------------------------------
 
-pointer_toggle = 0 //Acts as boolean
-
 do
-    //Handle events
+    //Handle keys
     if GetRawKeyState(KEY_ESCAPE) then exit
-    if GetPointerPressed()
-		pointer_toggle = !pointer_toggle
-	endif
     
     //Determines action of current frame
     select program_stage
-		
 		case "": //First action on app start
-			program_stage = "menu"
-			menu()
+			program_stage = "start_menu"
+			start_menu()
 			endcase
 		
-		case "menu":
-			menu()
+		case "start_menu":
+			start_menu()
 			endcase
 			
-		case "settings":
+		case "ingame_menu":
+			ingame_menu()
+			endcase
+			
+		case "settings_menu":
 			settings_menu()
 			endcase
 			
 		case "reference":
-			//quick_reference()
+			//reference()
 			endcase
 			
 		case "game":
 			game()
+			endcase
+			
+		case "exit_app":
+			exit
 			endcase
 			
 	endselect
@@ -70,9 +72,8 @@ loop
 //Functions-------------------------------------------------------------------------------------------------------------
 
 function print_info()
-	Print( ScreenFPS() ) //Shows FPS on-screen
-    Print("Program stage: " + program_stage + ", Program Substage: " + program_substage)
-    Print(os)
+    Print("Stage: " + program_stage + ", Substage: " + program_substage)
+    Print( str(val(str(ScreenFPS() + 0.5))) + ", " + os ) //Shows FPS on-screen, rounded
 endfunction
 
 function card_calc(value as integer, suit as string)
