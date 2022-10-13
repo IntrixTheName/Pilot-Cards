@@ -42,7 +42,7 @@ endfunction
 //Encoders & decoders
 function to_base32(base10_input as integer)
 	output as string
-	select input
+	select base10_input
 		case 1:
 			output = "1"
 			endcase
@@ -141,7 +141,7 @@ endfunction output
 
 function to_base10(base32_input as string)
 	output as integer
-	select input
+	select base32_input
 		case "1":
 			output = 1
 			endcase

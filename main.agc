@@ -4,10 +4,10 @@
 //Refer to READ_ME.txt for further instructions/informaton
 
 //Initializations & Constants (I'm leaning heavier towards constants bc active dev & many changes)
+#insert "PilotConstants.agc"
 #insert "Setup.agc"
 #insert "PlayerType.agc"
 #include "KeyScanCodes.agc"
-#include "PilotConstants.agc"
 #include "FrameFunctions.agc"
 #include "FileManip.agc"
 
@@ -112,7 +112,7 @@ function create_card_sprite(card_id as integer)
 	
 	//Identifies subimage from card
 	ident as string
-	ident = ident + str(mod((card_id + 1),13))
+	ident = ident + str(mod(card_id - 1,13) + 1)
 	
 	if card_id <= 13
 		ident = ident + "spades"
@@ -128,3 +128,10 @@ function create_card_sprite(card_id as integer)
 	CreateSprite(card_id, LoadSubImage(CARD_ATLAS, ident))
 endfunction
 
+function create_button(id as integer, text as string, pos_x as integer, pos_y as integer, size_x as integer, size_y as integer, active_visible as integer)
+	AddVirtualButton(id,pos_x,pos_y,1000)
+	SetVirtualButtonSize(id,size_x,size_y)
+	SetVirtualButtonText(id,text)
+	SetVirtualButtonActive(id,active_visible)
+	SetVirtualButtonVisible(id,active_visible)
+endfunction

@@ -4,8 +4,6 @@
 SetErrorMode(2)
 
 // set window properties
-#constant RES_X GetMaxDeviceWidth()
-#constant RES_Y GetMaxDeviceHeight()
 SetWindowTitle("Pilot Card Game")
 SetWindowSize(RES_X, RES_Y, 1) //1 sets fullscreen
 SetWindowAllowResize(0) // allow the user to resize the window
