@@ -41,5 +41,5 @@ function game_start_defaults()
 	
 	opp.health = 20
 
-	board as integer [16] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+	board = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 endfunction
