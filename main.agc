@@ -13,12 +13,28 @@
 
 global os as string 
 os = GetDeviceBaseName() //Detect OS on device when running, for debugging purposes
+
+global sound_toggle as integer
+global control_method as integer
+//Set default control of cards, drag & drop or click & unclick
+if os = "android" or os = "ios"
+	control_method = 1 //Drag & drop
+else
+	control_method = 0 //Click toggle
+	//Click toggle = click to pick up card, click again to put it back
+endif
+
 SetRandomSeed(GetSecondsFromUnix(GetUnixTime())) //Sets condition for random generator
 
-LoadImage(BACKGROUND_IMAGE,"card_table.png")
-CreateSprite(BACKGROUND, BACKGROUND_IMAGE)
-SetSpriteSize(BACKGROUND, VIR_X + 200, VIR_Y + 100)
-SetSpritePosition(BACKGROUND,-100,-50)
+scale_x as float
+scale_y as float
+scale_x = ValFloat(str(RES_X) + ".0")/ValFloat(str(VIR_X) + ".0") //VIR_X = 1920 = width of background & largest reasonable resolution needed
+scale_y = ValFloat(str(RES_Y) + ".0")/ValFloat(str(VIR_Y) + ".0")
+
+LoadImageResized(BACKGROUND_IMAGE,"card_table.png",scale_x,scale_y,0)
+CreateSprite(BACKGROUND,BACKGROUND_IMAGE)
+SetSpriteSize(BACKGROUND,VIR_X,VIR_Y)
+SetSpritePosition(BACKGROUND,0,0)
 LoadImage(CARD_ATLAS,"card_atlas.png") //Using atlas so I only have to import 1 pic for all cards
 
 global board as integer [16] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -100,10 +116,12 @@ function card_calc(value as integer, suit as string)
 	//Return id_value
 endfunction id_value
 
-function draw_card(person as string)
-	if person = "player"
-	
-	endif
+function draw_cards(person ref as Player)
+	while person.hand.length < 4
+		index = Random(1,person.deck.length)
+		person.hand.insert(person.deck[index])
+		person.deck.remove(index)
+	endwhile
 endfunction
 
 function create_card_sprite(card_id as integer)

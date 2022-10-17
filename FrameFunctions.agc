@@ -5,6 +5,7 @@ global program_substage as string = "" //Sub-stage to refine functions
 global game_stage as string = "" //Like substage counter,but for game specifically
 
 function start_menu()
+	//Button ID's for this section
 	play_button = 1
 	settings_button = 2
 	tutorial_button = 3
@@ -41,7 +42,6 @@ function start_menu()
 				next i
 				
 			elseif GetVirtualButtonReleased(settings_button)
-				//Settings
 				program_switch("settings_menu")
 				
 			elseif GetVirtualButtonReleased(tutorial_button)
@@ -54,12 +54,10 @@ function start_menu()
 				program_switch("exit_app")
 				
 			elseif GetVirtualButtonReleased(new_button)
-				//New game
 				game_stage = "new_game"
 				program_switch("game")
 				
 			elseif GetVirtualButtonReleased(load_button)
-				//Load save & switch to game
 				game_stage = "load_save"
 				program_switch("game")
 					
@@ -88,26 +86,38 @@ endfunction
 
 
 function settings_menu()
+	start_menu_button = 1
+	control_toggle_button = 2
+	sound_toggle_button = 3
+	
 	select program_substage
 		case "":
-			CreateText(2,"Settings Menu, TBD")
-			SetTextPosition(2, VIR_X/2, 200)
-			SetTextSize(2,50)
+			control_text as string
+			sound_text as string
+			if control_method = 1 then control_text = "Control Style: Drag & Drop"
+			if control_method = 0 then control_text = "Control Style: Click Select"
 			
-			start_menu_button = 1
-			AddVirtualButton(start_menu_button, VIR_X/2, VIR_Y/2, 1000)
-			SetVirtualButtonSize(start_menu_button,800,300)
-			SetVirtualButtonText(start_menu_button,"Return to Main Menu")
+			if sound_toggle = 1 then sound_text = "Sound: On"
+			if sound_toggle = 0 then sound_text = "Sound: Off"
 			
-			CreateText(1,"Settings")
-			SetTextPosition(1, VIR_X/2, VIR_Y/2)
+			create_button(start_menu_button,"Return to Main Menu",(VIR_X/2),(VIR_Y/4),1500,200,1)
+			create_button(control_toggle_button,control_text,(VIR_X/2),(VIR_Y/2),1500,200,1)
+			create_button(sound_toggle_button,sound_text,(VIR_X/2),(VIR_Y * 3/4),1500,200,1)
 			
 			program_substage = "check_select"
 			endcase
 			
 		case "check_select":
-			if GetVirtualButtonReleased(1)
+			if GetVirtualButtonReleased(start_menu_button)
 				program_switch("start_menu")
+			elseif GetVirtualButtonReleased(control_toggle_button)
+				control_method = not control_method
+				if control_method = 1 then SetVirtualButtonText(control_toggle_button,"Control Style: Drag & Drop")
+				if control_method = 0 then SetVirtualButtonText(control_toggle_button,"Control Style: Click Select")
+			elseif GetVirtualButtonReleased(sound_toggle_button)
+				sound_toggle = not sound_toggle
+				if sound_toggle = 1 then SetVirtualButtonText(sound_toggle_button,"Sound: On")
+				if sound_toggle = 0 then SetVirtualButtonText(sound_toggle_button,"Sound: Off")
 			endif
 		endcase		
 	endselect
@@ -129,26 +139,16 @@ function game()
 			endcase
 			
 		case "game_init":
-			while pla.hand.length < 4
-				//Choose random index, take said index from deck and add to hand, then remove from deck
-				i = Random(1,pla.deck.length)
-				pla.hand.insert(pla.deck[i])
-				pla.deck.remove(i)
-			endwhile
-			
-			while opp.hand.length < 4
-				//Choose random index, take said index from deck and add to hand, then remove from deck
-				i = Random(1,opp.deck.length)
-				opp.hand.insert(opp.deck[i])
-				opp.deck.remove(i)
-			endwhile
+			draw_cards(pla) //Fill hands to capacity
+			draw_cards(opp)
 			
 			for i = 1 to 4
 				create_card_sprite(pla.hand[i])
-				SetSpritePosition(pla.hand[i],100 + (50 * i),VIR_Y - 100)
+				SetSpritePosition(pla.hand[i],100 + (100 * i),VIR_Y - 200)
 				create_card_sprite(opp.hand[i])
-				SetSpritePosition(opp.hand[i],100 + (50 * i),100)
+				SetSpritePosition(opp.hand[i],100 + (100 * i),-40)
 			next i
+			
 			
 			endcase
 	endselect
