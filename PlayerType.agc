@@ -9,6 +9,8 @@ endtype
 global pla as Player //Player object, black cards
 global opp as Player //Opponent object, red cards
 
+
+
 function game_start_defaults()
 	//Set standard values for starting a new game
 	
@@ -45,4 +47,33 @@ function game_start_defaults()
 	opp.health = 20
 
 	board = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+endfunction
+
+function draw_cards(person ref as Player)
+	while person.hand.length < 4
+		index = Random(1,person.deck.length)
+		person.hand.insert(person.deck[index])
+		person.deck.remove(index)
+	endwhile
+	if person.deck.length < 4 then shuffle(person)
+endfunction
+
+function shuffle(person ref as Player)
+	while person.trash.length > 0
+		index = Random(1,person.trash.length)
+		person.deck.insert(person.trash[index])
+		person.trash.remove(index)
+	endwhile
+endfunction
+
+function trash_card(card_id as integer)
+	if card_id <= 13
+		pla.trash.insert(card_id)
+	elseif card_id <= 26
+		opp.trash.insert(card_id)
+	elseif card_id <= 39
+		pla.trash.insert(card_id)
+	else
+		opp.trash.insert(card_id)
+	endif
 endfunction

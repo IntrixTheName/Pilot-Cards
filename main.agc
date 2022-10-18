@@ -91,7 +91,9 @@ loop
 //Functions-------------------------------------------------------------------------------------------------------------
 
 function print_info()
-    Print("Stage: " + program_stage + ", Substage: " + program_substage)
+    //Print("Stage: " + program_stage + ", Substage: " + program_substage)
+    Print(str(GetDeviceWidth()) + ", " + str(GetMaxDeviceWidth()))
+    Print(str(GetDeviceHeight()) + ", " + str(GetMaxDeviceHeight()))
     Print( str(val(str(ScreenFPS() + 0.5))) + ", " + os ) //Shows FPS on-screen, rounded
 endfunction
 
@@ -115,14 +117,6 @@ function card_calc(value as integer, suit as string)
 	
 	//Return id_value
 endfunction id_value
-
-function draw_cards(person ref as Player)
-	while person.hand.length < 4
-		index = Random(1,person.deck.length)
-		person.hand.insert(person.deck[index])
-		person.deck.remove(index)
-	endwhile
-endfunction
 
 function create_card_sprite(card_id as integer)
 	//Deletes current version of sprite if it exists, safeguard

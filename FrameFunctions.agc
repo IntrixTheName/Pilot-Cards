@@ -129,8 +129,8 @@ endfunction
 function game()
 	select game_stage
 		case "load_save":
-			decode_save()
-			game_stage = "player_turn"
+			//decode_save()
+			//game_stage = "player_turn"
 			endcase
 		
 		case "new_game":
@@ -144,12 +144,17 @@ function game()
 			
 			for i = 1 to 4
 				create_card_sprite(pla.hand[i])
-				SetSpritePosition(pla.hand[i],100 + (100 * i),VIR_Y - 200)
+				SetSpritePosition(pla.hand[i],50 + (187 * (i-1)),VIR_Y - 200)
 				create_card_sprite(opp.hand[i])
-				SetSpritePosition(opp.hand[i],100 + (100 * i),-40)
+				SetSpritePosition(opp.hand[i],50 + (187 * (i-1)),-40)
 			next i
+			endcase
 			
+		case "pla_turn_start":
+			//if Get
+			endcase
 			
+		case "pla_card_inhand":
 			endcase
 	endselect
 endfunction
