@@ -57,10 +57,10 @@ FILE_5=FileManip.agc;-1
 FILE_6=PlayerType.agc;-1
 
 [files]
-FILE_NAME_0=1;main.agc;1252;0
+FILE_NAME_0=0;main.agc;3787;0
 FILE_NAME_1=0;Setup.agc;657;4
 FILE_NAME_2=0;PilotConstants.agc;417;5
-FILE_NAME_3=0;FrameFunctions.agc;4759;1
+FILE_NAME_3=1;FrameFunctions.agc;5436;1
 FILE_NAME_4=0;FileManip.agc;1440;2
 FILE_NAME_5=0;PlayerType.agc;1618;3
 

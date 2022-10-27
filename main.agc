@@ -91,10 +91,10 @@ loop
 //Functions-------------------------------------------------------------------------------------------------------------
 
 function print_info()
-    //Print("Stage: " + program_stage + ", Substage: " + program_substage)
-    Print(str(GetDeviceWidth()) + ", " + str(GetMaxDeviceWidth()))
-    Print(str(GetDeviceHeight()) + ", " + str(GetMaxDeviceHeight()))
-    Print( str(val(str(ScreenFPS() + 0.5))) + ", " + os ) //Shows FPS on-screen, rounded
+    Print("Stage: " + program_stage + ", Substage: " + program_substage + ", Gamestage: " + game_stage + ", temp: " + str(temp))
+    //Print(str(GetDeviceWidth()) + ", " + str(GetMaxDeviceWidth()))
+    //Print(str(GetDeviceHeight()) + ", " + str(GetMaxDeviceHeight()))
+    //Print( str(val(str(ScreenFPS() + 0.5))) + ", " + os ) //Shows FPS on-screen, rounded
 endfunction
 
 function card_calc(value as integer, suit as string)
@@ -138,6 +138,7 @@ function create_card_sprite(card_id as integer)
 	
 	//Create sprite with information
 	CreateSprite(card_id, LoadSubImage(CARD_ATLAS, ident))
+	SetSpriteSize(card_id,CARD_X,CARD_Y)
 endfunction
 
 function create_button(id as integer, text as string, pos_x as integer, pos_y as integer, size_x as integer, size_y as integer, active_visible as integer)

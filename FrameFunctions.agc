@@ -2,6 +2,7 @@
 
 global program_stage as string = "" //Determines which function in the main loop handles current frame
 global program_substage as string = "" //Sub-stage to refine functions
+global temp as integer = 0 //Used to take a temporary value to remember a value in between frames
 global game_stage as string = "" //Like substage counter,but for game specifically
 
 function start_menu()
@@ -148,13 +149,29 @@ function game()
 				create_card_sprite(opp.hand[i])
 				SetSpritePosition(opp.hand[i],50 + (187 * (i-1)),-40)
 			next i
+			game_stage = "pla_turn_start"
 			endcase
 			
 		case "pla_turn_start":
-			//if Get
+			if GetPointerState() = 1
+				for i = 1 to 4
+					if GetSpriteHitTest(pla.hand[i],GetPointerX(),GetPointerY()) = 1
+						temp = pla.hand[i]
+						game_stage = "pla_card_inhand"
+					endif
+				next i
+				if temp > 0 and temp <= 56
+					game_stage = "pla_card_inhand"
+				endif
+			endif
 			endcase
 			
 		case "pla_card_inhand":
+			if GetPointerState()
+				SetSpritePosition(temp,GetPointerX(),GetPointerY())
+			else
+				game_stage = "pla_turn_start"
+			endif
 			endcase
 	endselect
 endfunction
